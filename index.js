@@ -17,7 +17,7 @@ const port = process.env.PORT || 5000;
 
 // Allowed origins (Local + Production)
 const allowedOrigins = [
-  "http://localhost:5173",
+  "https://new-website-frontend-alpha.vercel.app",
   process.env.FRONTEND_URL, // Add frontend deployed URL here later
 ];
 
