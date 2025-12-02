@@ -13,25 +13,20 @@ import reviewRouter from "./routes/reviewRoute.js";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8000;
 
-// Allowed origins (Local + Production)
-const allowedOrigins = [
-  "https://new-website-frontend-alpha.vercel.app",
-  process.env.FRONTEND_URL, // Add frontend deployed URL here later
-];
+// Required in production for secure cookies
+app.set("trust proxy", 1);
 
 app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
+    cors({
+        origin: [
+            "https://new-website-frontend-alpha.vercel.app",
+            "http://localhost:5137",
+            process.env.FRONTEND_URL
+        ],
+        credentials: true
+    })
 );
 
 app.use(express.json());
@@ -46,12 +41,11 @@ app.use("/api/ai", aiRouter);
 app.use("/api/review", reviewRouter);
 
 app.get("/", (req, res) => {
-  res.send("Hello From Server");
+    res.send("Hello From Server");
 });
 
-// Connect DB first, then start server
 connectDb().then(() => {
-  app.listen(port, () => {
-    console.log(`🚀 Server started on port ${port}`);
-  });
+    app.listen(port, () => {
+        console.log(`🚀 Server started on port ${port}`);
+    });
 });
