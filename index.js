@@ -21,6 +21,7 @@ app.set("trust proxy", 1);
 app.use(
     cors({
         origin: [
+            "https://www.timelessaestheticss.com",
             "https://new-website-frontend-alpha.vercel.app",
             "http://localhost:5137",
             process.env.FRONTEND_URL
