@@ -9,6 +9,7 @@ import courseRouter from "./routes/courseRoute.js";
 import paymentRouter from "./routes/paymentRoute.js";
 import aiRouter from "./routes/aiRoute.js";
 import reviewRouter from "./routes/reviewRoute.js";
+import blogRouter from "./routes/blogRoute.js";
 
 dotenv.config();
 
@@ -24,6 +25,9 @@ app.use(
             "https://www.timelessaestheticss.com",
             "https://new-website-frontend-alpha.vercel.app",
             "http://localhost:5137",
+            "http://localhost:5174",
+            "http://localhost:8000",
+
             process.env.FRONTEND_URL
         ],
         credentials: true
@@ -40,6 +44,7 @@ app.use("/api/course", courseRouter);
 app.use("/api/payment", paymentRouter);
 app.use("/api/ai", aiRouter);
 app.use("/api/review", reviewRouter);
+app.use("/api/blogs", blogRouter);
 
 app.get("/", (req, res) => {
     res.send("Hello From Server");
