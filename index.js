@@ -42,7 +42,7 @@ app.use("/api/course", courseRouter);
 app.use("/api/payment", paymentRouter);
 app.use("/api/ai", aiRouter);
 app.use("/api/review", reviewRouter);
-app.use("/api/blogs", blogRouter); // ✅ ADD THIS
+app.use("/api/blogs", blogRouter); 
 
 
 app.get("/", (req, res) => {
