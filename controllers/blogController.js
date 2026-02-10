@@ -5,13 +5,19 @@ export const getAllBlogs = async (req, res) => {
   try {
     const { page = 1, limit = 10, status = 'published' } = req.query;
     
-    const blogs = await Blog.find({ status })
+    // Build filter object
+    const filter = {};
+    if (status !== 'all') {
+      filter.status = status;
+    }
+    
+    const blogs = await Blog.find(filter)
       .sort({ createdAt: -1 })
       .limit(limit * 1)
       .skip((page - 1) * limit)
-      .select('-content'); // Exclude content from listing
+      .select(status === 'all' ? '' : '-content'); // Include content for admin, exclude for public
     
-    const total = await Blog.countDocuments({ status });
+    const total = await Blog.countDocuments(filter);
     
     res.json({
       success: true,
