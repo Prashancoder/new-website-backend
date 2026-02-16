@@ -26,6 +26,7 @@ app.use(
             "https://www.timelessaestheticss.com",
             "https://new-website-frontend-alpha.vercel.app",
             "http://localhost:5137",
+            "http://localhost:5173",
             process.env.FRONTEND_URL
         ],
         credentials: true
