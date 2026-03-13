@@ -10,6 +10,7 @@ import paymentRouter from "./routes/paymentRoute.js";
 import aiRouter from "./routes/aiRoute.js";
 import reviewRouter from "./routes/reviewRoute.js";
 import blogRouter from "./routes/blogRoute.js";
+import leadRouter from "./routes/leadRoutes.js";
 
 
 dotenv.config();
@@ -43,7 +44,8 @@ app.use("/api/course", courseRouter);
 app.use("/api/payment", paymentRouter);
 app.use("/api/ai", aiRouter);
 app.use("/api/review", reviewRouter);
-app.use("/api/blogs", blogRouter); 
+app.use("/api/blogs", blogRouter);
+app.use("/api/leads", leadRouter); 
 
 
 app.get("/", (req, res) => {
